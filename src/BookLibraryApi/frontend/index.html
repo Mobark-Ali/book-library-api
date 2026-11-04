@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Library</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="all.min.css" />
+</head>
+<body>
+  <header>
+    <h1><i class="fa-solid fa-swatchbook"></i> Book Library</h1>
+    <div id="auth-area">
+      <input id="username" placeholder="Username" />
+      <input id="password" type="password" placeholder="Password" />
+      <button id="login-btn">Login</button>
+      <button id="register-btn">Register</button>
+      <button id="logout-btn" style="display:none">Logout</button>
+    </div>
+  </header>
+
+  <main>
+<section id="add-book-section" style="display:none">
+      <h2>Add a Book</h2>
+      <form id="book-form">
+        <input id="title" placeholder="Title" required />
+        <input id="isbn" placeholder="ISBN" />
+        <input id="year" type="number" placeholder="Published Year" required />
+        <input id="authorId" type="number" placeholder="Author ID" required />
+        <button type="submit">Add</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>Books</h2>
+      <ul id="book-list"></ul>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+  <script src="all.min.js"></script>
+</body>
+</html>

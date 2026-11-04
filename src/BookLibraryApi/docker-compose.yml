@@ -1,0 +1,23 @@
+version: "3.9"
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "YourStrong!Passw0rd"
+    ports: ["1433:1433"]
+    volumes:
+      - sql-data:/var/opt/mssql
+
+  api:
+    build: .
+    depends_on: [sqlserver]
+    ports: ["8080:8080"]
+    environment:
+      ConnectionStrings__DefaultConnection: "Server=sqlserver;Database=BookLibraryDb;User Id=sa;Password=YourStrong!Passw0rd;TrustServerCertificate=True;"
+      Jwt__Key: "CHANGE_THIS_TO_A_LONG_RANDOM_SECRET_AT_LEAST_32_CHARS_LONG!!"
+      Jwt__Issuer: "BookLibraryApi"
+      Jwt__Audience: "BookLibraryClient"
+
+volumes:
+  sql-data:
